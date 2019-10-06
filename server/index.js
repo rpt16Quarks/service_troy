@@ -5,5 +5,15 @@ const app = express();
 
 app.use(express.static('public'))
 
+app.get('/description/1', (req,res) => {
+  db.query((err,data) => {
+    if(err) {
+      res.send(err)
+    } else (
+      res.send(data)
+    )
+  })
+})
+
 app.listen(3005);
 
