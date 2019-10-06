@@ -42,7 +42,7 @@ var ship_pay = new Schema ({
     price: Number,
     region:String,
     service: String,
-    est_time: String
+    est_time: Date
   },
   return_policy: {
     exist: Boolean,
@@ -136,7 +136,7 @@ let dropdb = () => {
 let randomProduct = () => {
   let array = [];
   for (let i = 0; i <= 10; i++) {
-    let exist = Math.floor(Math.random() * Math.floor(2))
+    let exist = Math.floor(Math.random() * 2)
     if (exist) {
       if (i <= 7 ) {
         let str = faker.lorem.words();
