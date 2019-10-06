@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "version": "",
+  "name": "product-description",
+  "version": "1.0.0",
   "description": "",
   "author": "",
   "license": "",
@@ -8,10 +8,25 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "server": "nodemon server/index.js",
+    "build": "webpack -d --watch",
+    "seed": "node seed.js",
+    "test": "jest"
   },
   "dependencies": {
+    "bluebird": "^3.7.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.7.3",
+    "nodemon": "^1.19.3",
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/core": "^7.6.2",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^24.9.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   }
 }
