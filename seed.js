@@ -58,7 +58,8 @@ var Purchase = mongoose.model('Purchase', ship_pay)
 let seed = () => {
   let clear = dropdb()
   let random = randomProduct()
-  let data = []
+  let data = [];
+  let transaction = [];
   for(let i =0; i < 10; i++) {
     let currProd = {
       item_number: i,
@@ -84,15 +85,42 @@ let seed = () => {
       }
     }
     data.push(currProd)
+
+    let currtran = {
+      item_number: i,
+      ship_handling: {
+        item_location: faker.address.state(),
+        ship_to: faker.address.country(),
+        ship_excludes: faker.address.country(),
+        qty: faker.random.number()
+      },
+      shipping_cost: {
+        price: faker.commerce.price(),
+        region:faker.address.country(),
+        service: faker.lorem.words(),
+        est_time: faker.date.future()
+      },
+      return_policy: {
+        exist: faker.random.boolean(),
+        deadline: faker.random.number(),
+        type: faker.random.words(),
+        pay_shipping: faker.lorem.words()
+      }
+    }
+    transaction.push(currtran)
   }
-  Product.collection.insertMany(data,(err,docs) => {
+  addDocuments(data,Product)
+  addDocuments(transaction, Purchase)
+}
+
+let addDocuments = (array,mod) => {
+  mod.collection.insertMany(array, (err,docs) => {
     if (err) {
       return console.log(err)
     } else {
       console.log('Multiple documents added to collection')
     }
   })
-
 }
 
 let dropdb = () => {
