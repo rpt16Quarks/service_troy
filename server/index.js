@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
-cosnt app = express();
+const app = express();
 
 app.use(express.static('public'))
 
