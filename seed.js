@@ -1,57 +1,12 @@
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const faker = require('faker');
+const description = require('./database/schema.js');
+const ship_pay = require('./database/schema.js');
 
 mongoose.connect('mongodb://localhost/description', {useUnifiedTopology: true, useNewUrlParser: true}).catch(err => console.log(err))
 
 var Schema = mongoose.Schema;
-
-var description = new Schema({
-  item_number: Number,
-  list_date: Date,
-  item_Spec: {
-    condition: String,
-    brand: String,
-    type: String,
-    packaging: String,
-    material: String,
-    rec_age: String,
-    char_family: String,
-    manfactured: String,
-    era: String,
-    year: Number,
-    size: Number,
-    upc: Number
-  },
-  seller_msg: {
-    prod_des: String,
-    item_des: String,
-    img_url: String
-  }
-})
-
-var ship_pay = new Schema ({
-  item_number: Number,
-  ship_handling: {
-    item_location: String,
-    ship_to: String,
-    ship_excludes: String,
-    qty: Number
-  },
-  shipping_cost: {
-    price: Number,
-    region:String,
-    service: String,
-    est_time: Date
-  },
-  return_policy: {
-    exist: Boolean,
-    deadline: Number,
-    type: String,
-    pay_shipping: String
-  }
-});
-
 var Product = mongoose.model('Product', description);
 var Purchase = mongoose.model('Purchase', ship_pay)
 
@@ -100,12 +55,10 @@ let seed = () => {
         service: faker.lorem.words(),
         est_time: faker.date.future()
       },
-      return_policy: {
-        exist: faker.random.boolean(),
-        deadline: faker.random.number(),
-        type: faker.random.words(),
-        pay_shipping: faker.lorem.words()
-      }
+      exist: faker.random.boolean(),
+      deadline: faker.random.number(),
+      type: faker.lorem.words(),
+      pay_shipping: faker.lorem.words()
     }
     transaction.push(currtran)
   }
@@ -153,3 +106,8 @@ let randomProduct = () => {
 }
 
 seed()
+
+module.exports = {
+  Product,
+  Purchase
+}
