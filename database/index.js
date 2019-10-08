@@ -17,7 +17,7 @@ let query = (cb) => {
       cb(err)
     } else {
       prodInfo.push(res)
-      queryTran(item, (err, res) => {
+      queryPurc(item, (err, res) => {
         if (err) {
           cb(err)
         } else {
@@ -40,7 +40,7 @@ let queryProd = (itemNum,cb) => {
   })
 }
 
-let queryTran = (itemNum,cb) => {
+let queryPurc = (itemNum,cb) => {
   Purchase.findOne({'item_number': itemNum}, (err,res) => {
       if (err) {
         cb(err)
@@ -53,5 +53,5 @@ let queryTran = (itemNum,cb) => {
 module.exports = {
   query,
   queryProd,
-  queryTran
+  queryPurc
 }
