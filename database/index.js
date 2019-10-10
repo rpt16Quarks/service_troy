@@ -21,7 +21,6 @@ let query = (cb) => {
         if (err) {
           cb(err)
         } else {
-          console.log('line 70',res)
           prodInfo.push(res);
           cb(null, prodInfo)
         }
