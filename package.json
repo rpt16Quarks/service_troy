@@ -8,7 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "server": "nodemon server/index.js",
+    "server": "nodemon server/server.js",
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack -d --watch",
     "seed": "node seed.js",
