@@ -9,13 +9,13 @@ module.exports = {
     path: DEST_Dir
   },
   module: {
-    loaders : [
+    rules : [
       {
-        test: /\.jsx?/,
+        test: /\.(js|jsx)?/,
         include: SRC_Dir,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
         }
       }
     ]
