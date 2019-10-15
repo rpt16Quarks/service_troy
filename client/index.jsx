@@ -1,5 +1,8 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import $ from 'jquery';
-
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import queryString from 'query-string';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,8 +13,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    const parsed = queryString.parse(location.search);
+    let prod = Number(parsed.prod_id)
+    console.log('troy service',prod)
     $.get({
-      url: 'http://localhost:3005/description/1',
+      url: `http://localhost:3002/description?prod_id=${prod}`,
       success: (res) => {
         console.log(res)
         this.setState({
@@ -27,4 +33,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('product-description'))
+ReactDOM.render(<Router><App /></Router>, document.getElementById('product-description'))
