@@ -1,12 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const querystring = require('querystring')
+const url = require('url')
 const db = require('../database/index.js');
 const app = express();
 
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
-app.get('/description/1', (req,res) => {
-  db.query((err,data) => {
+app.get('/description', (req,res) => {
+  let id = req.query.prod_id;
+  id = Number(id);
+  db.query(id,(err,data) => {
     if(err) {
       res.send(err)
     } else (

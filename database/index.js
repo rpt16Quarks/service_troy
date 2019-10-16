@@ -9,8 +9,7 @@ var Schema = mongoose.Schema;
 var Product = mongoose.model('Product', description);
 var Purchase = mongoose.model('Purchase', ship_pay)
 
-let query = (cb) => {
-  let item = Math.floor(Math.random() * 11);
+let query = (item, cb) => {
   let prodInfo = [];
   queryProd(item, (err,res) => {
     if (err) {
