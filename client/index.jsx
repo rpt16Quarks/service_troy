@@ -17,7 +17,7 @@ class App extends React.Component {
     let prod = Number(parsed.prod_id)
     console.log('troy service',prod)
     $.get({
-      url: `http://localhost:3002/description?prod_id=${prod}`,
+      url: `/description?prod_id=${prod}`,
       success: (res) => {
         console.log(res)
         this.setState({
