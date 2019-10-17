@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const querystring = require('querystring')
-const url = require('url')
+const querystring = require('querystring');
+const url = require('url');
+const cors = require('cors');
 const db = require('../database/index.js');
 const app = express();
 
+app.use(cors())
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
