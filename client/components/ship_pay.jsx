@@ -6,8 +6,9 @@ const ShipPay = (props) => {
   console.log('inside shippay', props)
   return (
     <div>
+      <p>Seller assumes all responsibility for this listing.</p>
       <ShipHand details={props.payment}/>
-      <ReturnPolicy />
+      <ReturnPolicy returns={props.payment}/>
       <div id="PayDetails">
         <h1>Payment details</h1>
         <p>Payment methods</p>
