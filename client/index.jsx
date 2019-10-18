@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import Description from './components/description.jsx';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import queryString from 'query-string';
 
@@ -19,7 +20,7 @@ class App extends React.Component {
     $.get({
       url: `/description?prod_id=${prod}`,
       success: (res) => {
-        console.log(res)
+        console.log('in success callback',res[0])
         this.setState({
           data:res
         })
@@ -27,9 +28,17 @@ class App extends React.Component {
       dataType: 'JSON'
     })
   }
-
+//conditional rendering here is a work around for an asycn bug that was crashing the app.  The first render had nothing in state so was passing undefined.  Now code waits for get request res before rendering components
   render() {
-    return <div>Hello React,Webpack 4 & Babel 7!</div>
+    if (this.state.data.length < 1) {
+      return <p>loading</p>
+    }
+    return (
+      <div>
+        <Description prodInfo={this.state.data[0]}/>
+      </div>
+
+    )
   }
 }
 
