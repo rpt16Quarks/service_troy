@@ -1,10 +1,12 @@
 import React from 'react';
 
 function AboutProd(props) {
-  //for in loop: loop through obj if val === '' than nothing else render
+  console.log('inside about prod',props)
   return (
     <div>
-      <p>will show some stuff here</p>
+      <h3>{props.seller.item_des}</h3>
+      <p>{props.seller.prod_des}</p>
+      <img src={props.seller.img_url} alt="here we go" height="250px" width="250px"></img>
     </div>
   )
 }

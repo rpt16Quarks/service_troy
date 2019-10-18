@@ -9,7 +9,7 @@ function Description(props) {
       <p>Last updated on {props.prodInfo.list_date}</p>
       <p>eBay item number:{props.prodInfo.item_number}</p>
       <ItemSpec specs={props.prodInfo.item_Spec}/>
-      <AboutProd />
+      <AboutProd seller ={props.prodInfo.seller_msg}/>
     </div>
   )
 }
