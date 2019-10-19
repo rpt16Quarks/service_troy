@@ -13,6 +13,8 @@ class App extends React.Component {
       data:[],
       page: 1
     }
+    this.handleDescClick = this.handleDescClick.bind(this);
+    this.handleSPClick = this.handleSPClick.bind(this);
   }
 
   componentDidMount() {
@@ -29,21 +31,31 @@ class App extends React.Component {
       dataType: 'JSON'
     })
   }
+
+  handleDescClick() {
+    this.setState({page:0})
+  }
+
+  handleSPClick() {
+    this.setState({page:1})
+  }
 //conditional rendering here is a work around for an asycn bug that was crashing the app.  The first render had nothing in state so was passing undefined.  Now code waits for get request res before rendering components
   render() {
     if (this.state.data.length < 1) {
       return <p>loading</p>
     }
-    if (this.state.page === 1) {
-      return (
-        <div>
-          <ShipPay payment={this.state.data[1]}/>
-        </div>
-      )
+    const selectPage = this.state.page;
+    let page
+    if (selectPage === 0) {
+      page = <Description prodInfo={this.state.data[0]}/>
+    } else if (selectPage === 1) {
+      page = <ShipPay payment={this.state.data[1]}/>
     }
     return (
       <div>
-        <Description prodInfo={this.state.data[0]}/>
+        <button onClick={this.handleDescClick}>Description</button>
+        <button onClick={this.handleSPClick}>Shipping and payments</button>
+        {page}
       </div>
 
     )
