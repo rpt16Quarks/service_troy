@@ -5,13 +5,14 @@ import Description from './components/description.jsx';
 import ShipPay from './components/ship_pay.jsx'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import queryString from 'query-string';
+import styled from 'styled-components';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data:[],
-      page: 1
+      page: 0
     }
     this.handleDescClick = this.handleDescClick.bind(this);
     this.handleSPClick = this.handleSPClick.bind(this);
@@ -20,7 +21,6 @@ class App extends React.Component {
   componentDidMount() {
     const parsed = queryString.parse(location.search);
     let prod = Number(parsed.prod_id)
-    console.log('troy service',prod)
     $.get({
       url: `/description?prod_id=${prod}`,
       success: (res) => {
@@ -53,9 +53,11 @@ class App extends React.Component {
     }
     return (
       <div>
-        <button onClick={this.handleDescClick}>Description</button>
-        <button onClick={this.handleSPClick}>Shipping and payments</button>
-        {page}
+        <button id="desc"onClick={this.handleDescClick}>Description</button>
+        <button id="shippay" onClick={this.handleSPClick}>Shipping and payments</button>
+        <Container>
+          {page}
+        </Container>
       </div>
 
     )
@@ -63,3 +65,10 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<Router><App /></Router>, document.getElementById('product-description'))
+
+const Container = styled.div`
+  border: 1px solid black;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 25px;
+`
