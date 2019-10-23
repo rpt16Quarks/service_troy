@@ -53,11 +53,13 @@ class App extends React.Component {
     }
     return (
       <div>
-        <button id="desc"onClick={this.handleDescClick}>Description</button>
-        <button id="shippay" onClick={this.handleSPClick}>Shipping and payments</button>
-        <Container>
+        <Menu>
+          <button id="desc"onClick={this.handleDescClick}>Description</button>
+          <button id="shippay" onClick={this.handleSPClick}>Shipping and payments</button>
+        </Menu>
+        <Content>
           {page}
-        </Container>
+        </Content>
       </div>
 
     )
@@ -66,9 +68,12 @@ class App extends React.Component {
 
 ReactDOM.render(<Router><App /></Router>, document.getElementById('product-description'))
 
-const Container = styled.div`
-  border: 1px solid black;
+const Menu = styled.div`
   margin-left: 20px;
   margin-right: 20px;
-  padding: 25px;
+`
+const Content = styled.div`
+  border: 1px solid black;
+  margin: 0px 20px 10px 20px;
+  padding: 0px 25px 25px 25px;
 `
