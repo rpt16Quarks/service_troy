@@ -14,9 +14,9 @@ const ReturnPolicy = (props) => {
               <td>Return Shipping</td>
             </tr>
             <tr>
-              <td>{props.returns.deadline}</td>
+              <td>{props.returns.deadline}  Days</td>
               <td>{props.returns.type}</td>
-              <td>{props.returns.pay_shipping} Days</td>
+              <td>{props.returns.pay_shipping}</td>
             </tr>
           </tbody>
         </InfoTables>

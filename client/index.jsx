@@ -54,8 +54,8 @@ class App extends React.Component {
     return (
       <div>
         <Menu>
-          <button id="desc"onClick={this.handleDescClick}>Description</button>
-          <button id="shippay" onClick={this.handleSPClick}>Shipping and payments</button>
+          <Button id="desc"onClick={this.handleDescClick}>Description</Button>
+          <Button id="shippay" onClick={this.handleSPClick}>Shipping and payments</Button>
         </Menu>
         <Content>
           {page}
@@ -69,11 +69,19 @@ class App extends React.Component {
 ReactDOM.render(<Router><App /></Router>, document.getElementById('product-description'))
 
 const Menu = styled.div`
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-left:5px;
 `
+const Button = styled.button`
+  border: 1px solid black;
+  color: blue;
+  font-size: 14px;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+  margin-left: 2px;
+`
+
 const Content = styled.div`
   border: 1px solid black;
-  margin: 0px 20px 10px 20px;
+  margin: 0px 5px 10px 5px;
   padding: 0px 25px 25px 25px;
 `
