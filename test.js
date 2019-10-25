@@ -60,4 +60,11 @@ describe('Testing App component from app.jsx', () => {
     expect(wrapper.length).toBe(1);
   })
 
+  test('it should run get request with componentDidMount', () => {
+    sinon.spy(App.prototype, 'componentDidMount');
+    const wrapper = mount(<App />);
+    expect(App.prototype.componentDidMount.callCount).toBe(1);
+    App.prototype.componentDidMount.restore();
+  })
+
 });
