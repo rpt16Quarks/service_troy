@@ -4,15 +4,17 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 import sinon from 'sinon';
 import { shallow, mount } from 'enzyme';
+import mocks from './mock.js';
+import App from './client/app.jsx';
+import Description from './client/components/description.jsx';
+import ShipPay from './client/components/ship_pay.jsx';
+import ReturnPolicy from './client/components/return_policy.jsx';
 
-import App from './client/app.jsx'
-
-const request = require('supertest')
+const request = require('supertest');
 const app = require('./server/index.js');
 
 
-xdescribe('Test the root path: Integration test', () => {
-
+describe('Test the server and database: Integration test', () => {
 
   test('It should return product information from both collections', (done)=> {
     request(app)
@@ -36,35 +38,75 @@ xdescribe('Test the root path: Integration test', () => {
 });
 
 
-
 describe('Testing App component from app.jsx', () => {
 
   test('it should render without errors', () => {
     const component = shallow(<App />);
     const wrapper = component.find(`[data-test='default']`);
     expect(wrapper.length).toBe(1)
-  })
+  });
 
-  it('it should render describe tab', () => {
+  test('it should render describe tab', () => {
     const component = shallow(<App />);
     component.setState({data:[{},{}]})
     const wrapper = component.find(`[data-test='description']`)
     expect(wrapper.length).toBe(1);
   });
 
-  it('it should render shipping and payment tab', () => {
+  test('it should render shipping and payment tab', () => {
     const component = shallow(<App />);
     component.setState({data:[{},{}]})
     component.setState({page: 1})
     const wrapper = component.find(`[data-test='ship_pay']`)
     expect(wrapper.length).toBe(1);
-  })
+  });
 
   test('it should run get request with componentDidMount', () => {
     sinon.spy(App.prototype, 'componentDidMount');
     const wrapper = mount(<App />);
     expect(App.prototype.componentDidMount.callCount).toBe(1);
     App.prototype.componentDidMount.restore();
+  });
+
+});
+
+describe('Testing the description tab from description.jsx', () => {
+
+  test('it should render without errors', () => {
+    const component = mount(<Description prodInfo={mocks.prodInfo} />);
+    const wrapper = component.find(`[data-test="desc-section"]`).hostNodes()
+    expect(wrapper.length).toBe(1)
   })
 
 });
+
+describe('Testing the shipping and payments tab from ship_pay.jsx', () => {
+
+  test('it should render ship_pay component without errors', () => {
+    const component = mount(<ShipPay payment={mocks.payment}/>)
+    const wrapper = component.find(`[data-test="ship-section"]`).hostNodes()
+    expect(wrapper.length).toBe(1)
+  })
+
+  test('it should render return policy component without errors', ()=> {
+    const component = mount(<ReturnPolicy returns={mocks.payment}/>);
+    const wrapper = component.find(`[data-test='returns-section']`).hostNodes();
+    expect(wrapper.length).toBe(1)
+  })
+
+  test('it should render correct return policy table if there is a return policy', () => {
+    const component = mount(<ReturnPolicy returns={mocks.payment}/>);
+    const wrapper = component.find(`[data-test="can-return"]`).hostNodes();
+    expect(wrapper.length).toBe(1)
+  })
+
+  test('it should render correct return policy table if there is no return policy', () => {
+    const component = mount(<ReturnPolicy returns={mocks.noReturn}/>);
+    const wrapper = component.find(`[data-test="no-return"]`).hostNodes();
+    expect(wrapper.length).toBe(1)
+  })
+
+});
+
+
+

@@ -52,7 +52,7 @@ class App extends React.Component {
     return (
       <div>
         <Menu>
-          <Button id="desc"onClick={this.handleDescClick}>Description</Button>
+          <Button id="desc" onClick={this.handleDescClick}>Description</Button>
           <Button id="shippay" onClick={this.handleSPClick}>Shipping and payments</Button>
         </Menu>
         <Content>

@@ -12,7 +12,7 @@
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack -d --watch",
     "seed": "node seed.js",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "bluebird": "^3.7.0",

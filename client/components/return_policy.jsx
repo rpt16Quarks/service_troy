@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const ReturnPolicy = (props) => {
   if (props.returns.exist) {
     return (
-      <Returns>
-        <Header>Return Policy</Header>
+      <Returns data-test="returns-section">
+        <Header data-test="can-return">Return Policy</Header>
         <InfoTables>
           <tbody>
             <tr>
@@ -26,7 +26,7 @@ const ReturnPolicy = (props) => {
   } else {
     return (
       <Returns>
-        <Header>Return Policy</Header>
+        <Header data-test="no-return">Return Policy</Header>
         <InfoTables>
           <tbody>
             <tr>

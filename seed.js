@@ -17,7 +17,7 @@ let seed = () => {
   let transaction = [];
   for(let i =0; i < 10; i++) {
     let imgNum = Math.floor(Math.random() * 10)
-    if (i === 0) {
+    if (i === 1) {
       let currProd = {
         item_number: i,
         list_date: "Oct 21, 2019 07:38:38 PDT",
@@ -65,7 +65,7 @@ let seed = () => {
       }
 
       transaction.push(currtran)
-      
+
     } else {
       let currProd = {
         item_number: i,

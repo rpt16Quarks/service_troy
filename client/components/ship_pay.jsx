@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import ReturnPolicy from './return_policy.jsx'
 
 const ShipPay = (props) => {
-  console.log('inside shippay', props)
   return (
-    <ShipContainer>
+    <ShipContainer data-test="ship-section">
       <p>Seller assumes all responsibility for this listing.</p>
       <Shipping>
         <Header>Shipping and Handling</Header>
