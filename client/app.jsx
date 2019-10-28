@@ -1,9 +1,9 @@
 import React from 'react';
-import $ from 'jquery';
 import Description from './components/description.jsx';
 import ShipPay from './components/ship_pay.jsx'
 import queryString from 'query-string';
 import styled from 'styled-components';
+import fetch from 'node-fetch'
 
 class App extends React.Component {
   constructor(props) {
@@ -19,15 +19,11 @@ class App extends React.Component {
   componentDidMount() {
     const parsed = queryString.parse(location.search);
     let prod = Number(parsed.prod_id)
-    $.get({
-      url: `/description?prod_id=${prod}`,
-      success: (res) => {
-        this.setState({
-          data:res
-        })
-      },
-      dataType: 'JSON'
+    fetch(`/description?prod_id=${prod}`, {
+      method: 'get'
     })
+    .then(response => response.json())
+    .then(res => this.setState({data:res}))
   }
 
   handleDescClick() {
