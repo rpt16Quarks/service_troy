@@ -9,7 +9,7 @@
   },
   "scripts": {
     "server": "nodemon server/server.js",
-    "start": "webpack-dev-server --open --mode development",
+    "start": "webpack",
     "build": "webpack -d --watch",
     "seed": "node seed.js",
     "test": "jest --detectOpenHandles"

@@ -1,7 +1,17 @@
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
+const mongoUrl = 'mongodb://mongo:27017/description'
 
-mongoose.connect('mongodb://localhost/description', {useUnifiedTopology: true, useNewUrlParser: true}).catch(err => console.log(err))
+var connectWithRetry = function() {
+  return mongoose.connect(mongoUrl,{useUnifiedTopology: true, useNewUrlParser: true}, function(err){
+    if (err) {
+      console.log('Failed mongo connect startup retry in 5 sec', err);
+      setTimeout(connectWithRetry,5000);
+    }
+  })
+}
+connectWithRetry();
+// mongoose.connect('mongodb://mongo:27017/description', {useUnifiedTopology: true, useNewUrlParser: true}).catch(err => console.log(err))
 
 var Schema = mongoose.Schema;
 
@@ -51,7 +61,10 @@ var ship_pay = new Schema ({
   }
 });
 
+var Product = mongoose.model('Product', description);
+var Purchase = mongoose.model('Purchase', ship_pay)
+
 module.exports = {
-  description,
-  ship_pay
+  Product,
+  Purchase
 }
