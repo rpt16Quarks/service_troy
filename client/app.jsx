@@ -24,6 +24,8 @@ class App extends React.Component {
     })
     .then(response => response.json())
     .then(res => this.setState({data:res}))
+
+    this.DesButton
   }
 
   handleDescClick() {
@@ -48,8 +50,11 @@ class App extends React.Component {
     return (
       <div>
         <Menu>
-          <Button id="desc" onClick={this.handleDescClick}>Description</Button>
+          <Button autoFocus id="desc" onClick={this.handleDescClick}>Description</Button>
           <Button id="shippay" onClick={this.handleSPClick}>Shipping and payments</Button>
+          <Report>
+            <p>Report item</p>
+          </Report>
         </Menu>
         <Content>
           {page}
@@ -64,18 +69,40 @@ export default App;
 
 const Menu = styled.div`
   padding-left:5px;
+  display:flex;
+  align-items:flex-end;
 `
+const Report = styled.div`
+  border-bottom: 1px solid black;
+  flex-grow:3
+  font-size: 12px;
+  text-align: right;
+  color: blue;
+  margin-right: 5px;
+  padding-right: 20px;
+`
+
 const Button = styled.button`
+  background: #f2f2f2;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   border: 1px solid black;
   color: blue;
   font-size: 14px;
   padding: 5px 10px 5px 10px;
   cursor: pointer;
-  margin-left: 2px;
+
+  &:focus {
+    outline:0;
+    background: white;
+    border-bottom: 1px solid white;
+
+  }
 `
 
 const Content = styled.div`
   border: 1px solid black;
+  border-top: 1px solid white;
   margin: 0px 5px 10px 5px;
   padding: 0px 25px 25px 25px;
 `
