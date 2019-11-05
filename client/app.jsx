@@ -3,7 +3,7 @@ import Description from './components/description.jsx';
 import ShipPay from './components/ship_pay.jsx'
 import queryString from 'query-string';
 import styled from 'styled-components';
-import fetch from 'node-fetch'
+import fetch from 'node-fetch';
 
 class App extends React.Component {
   constructor(props) {
@@ -80,6 +80,7 @@ const Report = styled.div`
   color: blue;
   margin-right: 5px;
   padding-right: 20px;
+
 `
 
 const Button = styled.button`
@@ -96,7 +97,6 @@ const Button = styled.button`
     outline:0;
     background: white;
     border-bottom: 1px solid white;
-
   }
 `
 
