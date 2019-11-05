@@ -1,6 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import ReturnPolicy from './return_policy.jsx'
+import React from 'react';
+import styled from 'styled-components';
+import ReturnPolicy from './return_policy.jsx';
+import PropTypes from 'prop-types'
 
 const ShipPay = (props) => {
   return (
@@ -67,6 +68,30 @@ const ShipPay = (props) => {
       </Paypal>
     </ShipContainer>
   )
+}
+
+ShipPay.propTypes = {
+  payment: PropTypes.shape({
+    item_number: PropTypes.number,
+    ship_handling: PropTypes.shape({
+      item_location: PropTypes.string,
+      ship_to: PropTypes.string,
+      ship_excludes: PropTypes.string,
+      qty: PropTypes.number
+    }),
+    shipping_cost: PropTypes.shape({
+      price: PropTypes.string,
+      region: PropTypes.string,
+      service: PropTypes.string,
+      est_time: PropTypes.string
+    }),
+    return_policy: PropTypes.shape({
+      exist: PropTypes.bool,
+      deadline: PropTypes.number,
+      type: PropTypes.string,
+      pay_shipping: PropTypes.string
+    })
+  })
 }
 
 export default ShipPay

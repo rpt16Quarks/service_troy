@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ReturnPolicy = (props) => {
   if (props.returns.exist) {
@@ -46,6 +47,15 @@ const ReturnPolicy = (props) => {
     )
 
   }
+}
+
+ReturnPolicy.propTypes = {
+  returns: PropTypes.shape({
+    exist: PropTypes.bool,
+    deadline: PropTypes.number,
+    type: PropTypes.string,
+    pay_shipping: PropTypes.string
+  })
 }
 
 export default ReturnPolicy
