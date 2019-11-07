@@ -1,14 +1,5 @@
-const mongoose = require('mongoose');
-const Promise = require('bluebird');
 const faker = require('faker');
-const description = require('./database/schema.js');
-const ship_pay = require('./database/schema.js');
-
-mongoose.connect('mongodb://localhost/description', {useUnifiedTopology: true, useNewUrlParser: true}).catch(err => console.log(err))
-
-var Schema = mongoose.Schema;
-var Product = mongoose.model('Product', description);
-var Purchase = mongoose.model('Purchase', ship_pay)
+const { Product, Purchase } = require('./database/schema.js');
 
 let seed = () => {
   let clear = dropdb()

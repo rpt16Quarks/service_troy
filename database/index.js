@@ -1,13 +1,4 @@
-const mongoose = require('mongoose');
-const Promise = require('bluebird');
-const description = require('./schema.js');
-const ship_pay = require('./schema.js')
-
-mongoose.connect('mongodb://localhost/description', {useUnifiedTopology: true, useNewUrlParser: true}).catch(err => console.log(err))
-
-var Schema = mongoose.Schema;
-var Product = mongoose.model('Product', description);
-var Purchase = mongoose.model('Purchase', ship_pay)
+const { Product, Purchase } = require('./schema.js');
 
 let query = (item, cb) => {
   let prodInfo = [];

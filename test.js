@@ -1,5 +1,6 @@
 import React from 'react';
 import Enzyme from 'enzyme';
+import checkPropTypes from 'check-prop-types';
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 import sinon from 'sinon';
@@ -76,7 +77,13 @@ describe('Testing the description tab from description.jsx', () => {
     const component = mount(<Description prodInfo={mocks.prodInfo} />);
     const wrapper = component.find(`[data-test="desc-section"]`).hostNodes()
     expect(wrapper.length).toBe(1)
-  })
+  });
+
+  test('it should have correct datatypes passed through props to Description component', () => {
+    const expectedProps = mocks.prodInfo
+    const propsErr = checkPropTypes(Description.propTypes, expectedProps, 'props', Description.name);
+    expect(propsErr).toBeUndefined();
+  });
 
 });
 
@@ -86,25 +93,37 @@ describe('Testing the shipping and payments tab from ship_pay.jsx', () => {
     const component = mount(<ShipPay payment={mocks.payment}/>)
     const wrapper = component.find(`[data-test="ship-section"]`).hostNodes()
     expect(wrapper.length).toBe(1)
-  })
+  });
+
+  test('it should have correct datatypes passed through props to ShipPay component', () => {
+    const expectedProps = mocks.payment
+    const propsErr = checkPropTypes(ShipPay.propTypes, expectedProps, 'props', ShipPay.name);
+    expect(propsErr).toBeUndefined();
+  });
 
   test('it should render return policy component without errors', ()=> {
     const component = mount(<ReturnPolicy returns={mocks.payment}/>);
     const wrapper = component.find(`[data-test='returns-section']`).hostNodes();
     expect(wrapper.length).toBe(1)
-  })
+  });
 
   test('it should render correct return policy table if there is a return policy', () => {
     const component = mount(<ReturnPolicy returns={mocks.payment}/>);
     const wrapper = component.find(`[data-test="can-return"]`).hostNodes();
     expect(wrapper.length).toBe(1)
-  })
+  });
 
   test('it should render correct return policy table if there is no return policy', () => {
     const component = mount(<ReturnPolicy returns={mocks.noReturn}/>);
     const wrapper = component.find(`[data-test="no-return"]`).hostNodes();
     expect(wrapper.length).toBe(1)
-  })
+  });
+
+  test('it should have correct datatypes passed through props to ReturnPolicy component', () => {
+    const expectedProps = mocks.payment
+    const propsErr = checkPropTypes(ReturnPolicy.propTypes, expectedProps, 'props', ReturnPolicy.name);
+    expect(propsErr).toBeUndefined();
+  });
 
 });
 

@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 
 function Description({
   prodInfo,
@@ -52,6 +54,19 @@ function Description({
       </AboutProd>
     </StyledDesc>
   )
+}
+
+Description.propTypes = {
+  prodInfo:PropTypes.shape({
+    item_number: PropTypes.number,
+    list_date: PropTypes.string,
+    item_Spec: PropTypes.object,
+    seller_msg: PropTypes.shape({
+      prod_des: PropTypes.string,
+      item_des: PropTypes.string,
+      img_url: PropTypes.string
+    })
+  })
 }
 
 export default Description
