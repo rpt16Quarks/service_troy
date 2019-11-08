@@ -101,13 +101,13 @@ const ShipContainer = styled.div`
   font-size: 12px;
 `
 const Shipping = styled.div`
-  border: 1px solid black;
+  border: 1px solid #cccccc;
   padding: 0px 20px 20px 20px
   line-height: 1em;
 `
 const Paypal = styled.div`
 margin-top: 15px;
-border: 1px solid black;
+border: 1px solid #cccccc;
 padding: 0px 20px 20px 10px
 `
 const Header = styled.h1`
@@ -120,7 +120,7 @@ const InfoTables = styled.table`
   width:100%;
   td {
     line-height: 1.5em;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #cccccc;
     padding: 5px 10px 5px 15px;
   }
   tr: nth-child(odd) {background-color: #f2f2f2}
@@ -132,11 +132,11 @@ const DeliveryInfo = styled.p`
 `
 const Link = styled.a`
   text-decoration:none;
-  font-color: blue;
+  font-color: #0654ba;
 `
 
 const Credit = styled.div`
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #cccccc;
   padding 25px;
   margin-bottom: 15px;
 `
@@ -154,5 +154,5 @@ const OfferTxt = styled.div`
   margin-right: 50px;
 `
 const FinancingHeader = styled(Header)`
-  color: blue;
+  color: #0654ba;
 `

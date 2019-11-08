@@ -62,7 +62,7 @@ export default ReturnPolicy
 
 const Returns = styled.div`
 margin-top: 15px;
-border: 1px solid black;
+border: 1px solid #cccccc;
 padding: 0px 20px 20px 10px
 `
 const Header = styled.h1`
@@ -75,7 +75,7 @@ const InfoTables = styled.table`
   padding-left: 10px;
   width:100%;
   td {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #cccccc;
     padding: 5px 10px 5px 15px;
   }
   tr: nth-child(odd) {background-color: #f2f2f2}
@@ -85,5 +85,5 @@ const Policy = styled.p`
 `
 const Link = styled.a`
   text-decoration:none;
-  font-color: blue;
+  font-color: #0654ba;
 `
