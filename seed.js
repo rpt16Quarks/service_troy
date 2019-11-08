@@ -6,7 +6,7 @@ let seed = () => {
   let random = randomProduct()
   let data = [];
   let transaction = [];
-  for(let i =0; i < 10; i++) {
+  for(let i =1; i <= 15; i++) {
     let imgNum = Math.floor(Math.random() * 10)
     if (i === 1) {
       let currProd = {

@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
-const mongoUrl = 'mongodb://mongo:27017/description'
+const mongoUrl = 'mongodb://localhost/description'
 
 var connectWithRetry = function() {
+  let count = 0;
   return mongoose.connect(mongoUrl,{useUnifiedTopology: true, useNewUrlParser: true}, function(err){
     if (err) {
       console.log('Failed mongo connect startup retry in 5 sec', err);
-      setTimeout(connectWithRetry,5000);
+      if (count <= 5) {
+        setTimeout(connectWithRetry,5000);
+        count++
+      }
     }
   })
 }
