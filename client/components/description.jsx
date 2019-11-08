@@ -12,7 +12,46 @@ function Description({
   //for in loop to filter out item specs with no data
   for(let key in specs) {
     if(specs[key] !== "") {
-      arr.push(`${key}:`);
+      switch (key) {
+        case 'condition':
+          arr.push(`Condition:`);
+          break;
+        case 'brand':
+          arr.push(`Brand:`);
+          break;
+        case 'type':
+          arr.push(`Type:`);
+          break;
+        case 'packaging':
+          arr.push(`Packaging:`);
+          break;
+        case 'material':
+          arr.push(`Material:`);
+          break;
+        case 'rec_age':
+          arr.push(`Recommended Age:`);
+          break;
+        case 'char_family':
+          arr.push('Character Family:');
+          break;
+        case 'manufactured':
+          arr.push(`Manufactured:`);
+          break;
+        case 'era':
+          arr.push(`Era:`);
+          break;
+        case 'year':
+          arr.push(`Year:`);
+          break;
+        case 'size':
+          arr.push(`Size:`);
+          break;
+        case 'upc':
+          arr.push(`UPC`);
+          break;
+        default:
+            arr.push(`${key}:`);
+      }
       arr.push(specs[key])
     }
   };
@@ -82,7 +121,7 @@ const ItemNumber = styled.p`
 
 
 const ItemSpec = styled.div`
-  border: 1px solid black;
+  border: 1px solid #cccccc;
   padding-left:
 `
 
