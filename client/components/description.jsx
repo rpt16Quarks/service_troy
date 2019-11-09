@@ -34,7 +34,7 @@ function Description({
         case 'char_family':
           arr.push('Character Family:');
           break;
-        case 'manufactured':
+        case 'manfactured':
           arr.push(`Manufactured:`);
           break;
         case 'era':
@@ -47,8 +47,10 @@ function Description({
           arr.push(`Size:`);
           break;
         case 'upc':
-          arr.push(`UPC`);
+          arr.push(`UPC:`);
           break;
+        case 'Main_Category':
+          arr.push(`Main Category:`)
         default:
             arr.push(`${key}:`);
       }
