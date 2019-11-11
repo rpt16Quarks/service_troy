@@ -10,16 +10,13 @@ const ShipPay = ({ payment }) => {
       <Shipping>
         <Header>Shipping and Handling</Header>
         <p>
-          Item location
-          <strong>{payment.ship_handling.item_location}</strong>
+          Item location: <strong>{payment.ship_handling.item_location}</strong>
         </p>
         <p>
-          Shipping to:
-          {payment.ship_handling.ship_to}
+          Shipping to: {payment.ship_handling.ship_to}
         </p>
         <p>
-          Excludes:
-          {payment.ship_handling.ship_excludes}
+          Excludes: {payment.ship_handling.ship_excludes}
         </p>
         <InfoTables>
           <tbody>
@@ -39,10 +36,7 @@ const ShipPay = ({ payment }) => {
         </InfoTables>
         <DeliveryInfo>
           *
-          <Link href="#">Estimated delivery dates</Link>
-          include seller's handling time, origin ZIP Code, destination ZIP Code and time of acceptance and will depend on shipping service selected and receipt of
-          <Link href="#">cleared payment</Link>
-          . Delivery times may vary, especially during peak periods.
+          <Link href="#">Estimated delivery dates</Link> include seller's handling time, origin ZIP Code, destination ZIP Code and time of acceptance and will depend on shipping service selected and receipt of <Link href="#">cleared payment</Link>. Delivery times may vary, especially during peak periods.
         </DeliveryInfo>
         <InfoTables>
           <tbody>
@@ -51,8 +45,7 @@ const ShipPay = ({ payment }) => {
             </tr>
             <tr>
               <td>
-                Taxes may be applicable at checkout.
-                <Link href="#">Learn more</Link>
+                Taxes may be applicable at checkout. <Link href="#">Learn more</Link>
               </td>
             </tr>
           </tbody>
@@ -80,8 +73,7 @@ const ShipPay = ({ payment }) => {
               Qualifying purchases could enjoy No Interest if paid in full in 6 months on purchases of $99 or more. Other offers may also be available.
             </p>
             <p>
-              Interest will be charged to your account from the purchase date if the balance is not paid in full within 6 months. Minimum monthly payments are required. Subject to credit approval.
-              <Link href="#">See terms</Link>
+              Interest will be charged to your account from the purchase date if the balance is not paid in full within 6 months. Minimum monthly payments are required. Subject to credit approval. <Link href="#">See terms</Link>
             </p>
             <p>The PayPal Credit account is issued by Synchrony Bank.</p>
           </OfferTxt>

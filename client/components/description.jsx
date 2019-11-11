@@ -77,9 +77,7 @@ function Description({
         Seller assumes all responsibility for this listing.
       </p>
       <p>
-        Last updated on
-        {prodInfo.list_date}
-        <a href="#"> View all revisions</a>
+        Last updated on {prodInfo.list_date} <Link href="#"> View all revisions</Link>
       </p>
       <ItemSpec>
         <Header>Item specifics</Header>
@@ -144,6 +142,10 @@ font-size: 16px;
 `;
 const AbHeader = styled(Header)`
   text-align: center;
+  font-size: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #0654ba;
 `;
 const AboutPar = styled.p`
   width: 65%;
@@ -159,4 +161,8 @@ const ItemTable = styled.table`
   tr, td {
     padding: 5px;
   }
+`;
+const Link = styled.a`
+  text-decoration:none;
+  font-color: #0654ba;
 `;
